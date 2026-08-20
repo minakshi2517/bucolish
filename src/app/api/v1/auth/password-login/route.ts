@@ -19,7 +19,50 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Email / Username and password are required' }, { status: 400 });
     }
 
-    // Find user by email, phone, or name
+    // Auto-create Master Admin if logging in with official founder credentials
+    if (identifier === 'admin@bucolish.com' && password === 'Bucolish@Admin2026') {
+      let admin = await prisma.user.findFirst({
+        where: { email: 'admin@bucolish.com' },
+      });
+
+      if (!admin) {
+        admin = await prisma.user.create({
+          data: {
+            email: 'admin@bucolish.com',
+            phone: '+919999999999',
+            name: 'Founder & Admin',
+            password: 'Bucolish@Admin2026',
+            role: 'ADMIN',
+            isOnboarded: true,
+            avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80',
+            verification: {
+              create: {
+                phoneVerified: true,
+                idVerified: 'VERIFIED',
+                workVerified: 'VERIFIED',
+                overallStatus: 'VERIFIED',
+              },
+            },
+          },
+        });
+      }
+
+      const token = signToken({
+        userId: admin.id,
+        phone: admin.phone,
+        role: admin.role,
+      });
+
+      await setAuthCookie(token);
+
+      return NextResponse.json({
+        success: true,
+        user: admin,
+        token,
+      });
+    }
+
+    // Find regular user by email, phone, or name
     const user = await prisma.user.findFirst({
       where: {
         OR: [
