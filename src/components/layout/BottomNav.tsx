@@ -8,14 +8,19 @@ import { Compass, Users, MessageSquare, ShieldCheck, User } from 'lucide-react';
 export default function BottomNav() {
   const pathname = usePathname();
 
-  // Hide on landing page, onboarding wizard, and quiz
-  if (pathname === '/' || pathname.startsWith('/onboarding') || pathname.startsWith('/quiz')) {
+  // Hide on landing page, onboarding wizard, quiz, and admin console
+  if (
+    pathname === '/' ||
+    pathname.startsWith('/onboarding') ||
+    pathname.startsWith('/quiz') ||
+    pathname.startsWith('/admin')
+  ) {
     return null;
   }
 
   const navItems = [
     { label: 'Explore', href: '/discover', icon: Compass },
-    { label: 'Co-Living', href: '/matches', icon: Users },
+    { label: 'MatchBox', href: '/matches', icon: Users },
     { label: 'Messages', href: '/matches', icon: MessageSquare },
     { label: 'Shield™', href: '/safety', icon: ShieldCheck },
     { label: 'Profile', href: '/profile', icon: User },
