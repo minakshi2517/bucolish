@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-
-const otpStore = new Map<string, { code: string; expiresAt: number }>();
+import { otpStore } from '@/lib/otp';
 
 export async function POST(req: NextRequest) {
   try {
@@ -36,5 +35,3 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: error?.message || 'Failed to send verification code' }, { status: 500 });
   }
 }
-
-export { otpStore };

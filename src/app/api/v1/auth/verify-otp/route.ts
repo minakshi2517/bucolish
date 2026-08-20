@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import prisma from '@/lib/prisma';
 import { signToken, setAuthCookie } from '@/lib/auth';
-import { otpStore } from '../request-otp/route';
+import { otpStore } from '@/lib/otp';
 
 export async function POST(req: NextRequest) {
   try {
