@@ -1,0 +1,187 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap');
+
+:root {
+  /* Brand Colors from Bucolish Logo & Poster */
+  --brand-purple: #5E17EB;
+  --brand-purple-hover: #4C0ED0;
+  --brand-purple-light: #EDE9FE;
+  --brand-purple-ultralight: #F5F3FF;
+  --brand-onyx: #12111A;
+  --brand-onyx-card: #1A1824;
+  --brand-slate: #27272A;
+  
+  /* System Accents */
+  --brand-green: #10B981;
+  --brand-green-light: #D1FAE5;
+  --brand-amber: #F59E0B;
+  --brand-amber-light: #FEF3C7;
+  --brand-coral: #EF4444;
+  --brand-coral-light: #FEE2E2;
+  
+  /* Neutral Palette */
+  --bg-primary: #FAFAFC;
+  --bg-surface: #FFFFFF;
+  --bg-surface-elevated: #FFFFFF;
+  --text-main: #12111A;
+  --text-muted: #64748B;
+  --text-subtle: #94A3B8;
+  --border-light: #E2E8F0;
+  --border-subtle: #F1F5F9;
+  
+  /* Shadows & Radius */
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  --radius-full: 9999px;
+  
+  --shadow-sm: 0 1px 3px rgba(18, 17, 26, 0.05);
+  --shadow-md: 0 4px 14px rgba(18, 17, 26, 0.08);
+  --shadow-lg: 0 10px 30px -5px rgba(94, 23, 235, 0.12), 0 8px 20px -6px rgba(18, 17, 26, 0.06);
+  --shadow-card: 0 12px 36px -4px rgba(18, 17, 26, 0.12);
+  --shadow-purple-glow: 0 8px 24px rgba(94, 23, 235, 0.28);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-main);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Force High-Contrast Inputs */
+input, textarea, select {
+  color: #09090b !important;
+  background-color: #ffffff;
+}
+
+input::placeholder, textarea::placeholder {
+  color: #94a3b8 !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+  letter-spacing: -0.02em;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94A3B8;
+}
+
+/* Utility Classes */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Buttons & Components */
+.btn-primary {
+  background: #5E17EB;
+  color: #FFFFFF;
+  font-weight: 600;
+  padding: 12px 24px;
+  border-radius: 9999px;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 14px rgba(94, 23, 235, 0.25);
+}
+.btn-primary:hover {
+  background: #4C0ED0;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(94, 23, 235, 0.35);
+}
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-secondary {
+  background: #EDE9FE;
+  color: #5E17EB;
+  font-weight: 600;
+  padding: 12px 24px;
+  border-radius: 9999px;
+  border: 1px solid rgba(94, 23, 235, 0.2);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+}
+.btn-secondary:hover {
+  background: #DDD6FE;
+}
+
+.btn-outline {
+  background: transparent;
+  color: #12111A;
+  font-weight: 600;
+  padding: 10px 20px;
+  border-radius: 9999px;
+  border: 1.5px solid #E2E8F0;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+}
+.btn-outline:hover {
+  border-color: #12111A;
+  background: rgba(18, 17, 26, 0.03);
+}
+
+.badge-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px;
+  border-radius: 9999px;
+  font-size: 12px;
+  font-weight: 600;
+  background: #EDE9FE;
+  color: #5E17EB;
+}
+
+.badge-verified {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 8px;
+  border-radius: 9999px;
+  font-size: 11px;
+  font-weight: 700;
+  background: #D1FAE5;
+  color: #065F46;
+}
