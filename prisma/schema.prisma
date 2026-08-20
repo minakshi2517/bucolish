@@ -1,11 +1,11 @@
-// Bucolish Prisma Schema
+// Bucolish Prisma Schema for Production PostgreSQL (Vercel Postgres / Neon / Supabase)
 
 generator client {
   provider = "prisma-client-js"
 }
 
 datasource db {
-  provider = "sqlite"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
